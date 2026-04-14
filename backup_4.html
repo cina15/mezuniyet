@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <link rel="stylesheet" href="https://pyscript.net" />
+    <script type="module" src="https://pyscript.net"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mezuniyet - Final</title>
+
+    <style>
+        .ana-hizalayici {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 50px;
+        }
+
+        .kapsayici {
+            display: inline-flex;
+            flex-direction: column;
+            width: 100%; 
+            align-items: stretch;
+            transition: transform 0.2s ease;
+        }
+
+        .kapsayici:hover {
+            transform: scale(0.95);
+        }
+
+        .kapsayici:active {
+            transform: scale(0.92); 
+        }
+
+        .buton-sarici {
+            line-height: 0;
+            margin-bottom: -18px; 
+            position: relative;
+            z-index: 10;
+        }
+
+        .unlem_kutusu{
+            width: 100px; 
+            height: 100px;
+            display: block;
+            margin-top: 10px;
+            transform: rotate(-20deg);
+        }
+
+        .esnek-buton {
+            display: block;
+            width: 100%;
+            padding: 25px 40px; 
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            background-color: white;
+            outline: none;
+            border: 20px solid; 
+            border-image-source: url('image.png'); 
+            border-image-slice: 40; 
+            border-image-repeat: stretch; 
+            box-sizing: border-box;
+        }
+
+        .esnek-buton:hover { filter: brightness(1.1); }
+
+        .alt-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            background-color: rgba(230, 230, 230, 0.7); 
+            border: 2px solid #b1b1b1;
+            border-top: none;
+            border-radius: 0 0 15px 15px;
+            width: 100%;
+            box-sizing: border-box;
+            z-index: 1;
+            position: relative;
+        }
+
+        .panel-icerik {
+            padding: 30px 20px 20px 20px; 
+            font-family: sans-serif;
+            color: #333;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .soru-isareti-kutusu img {
+            width: 200px; 
+            height: auto;
+            display: block;
+            margin-top: 10px;
+            transform: rotate(20deg);
+        }
+
+        .arrow1-kutusu img {
+            width: 200px; 
+            height: auto;
+            display: block;
+            margin-top: 10px;
+            transform: rotate(-20deg);
+        }
+
+        .arrow2-kutusu img {
+            width: 200px; 
+            height: auto;
+            display: block;
+            margin-top: 10px;
+            transform: scaleX(-1) rotate(-20deg);
+
+        }
+
+        /* AĞAÇ GÖRSELİ VE GÖLGE */
+        .agac-kutusu img {
+            width: 200px; 
+            height: auto;
+            display: block;
+            /* Ağacın altına eklenen gölge */
+            filter: drop-shadow(0px 15px 10px rgba(0,0,0,0.4));
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center; font-family: 'Arial Black', sans-serif; color: #2c3e50; margin-top: 30px;">
+        Doğa ile ilgili sorulara cevaplar. NOT: Sayfanın en altından istek sorularınızı bize gönderebilirsiniz.(Bazıları eklenebilir, bazıları eklenmeyebilir.)
+    </h1>
+
+    <div class="ana-hizalayici">
+        <div class="kapsayici">
+            <div class="buton-sarici">
+                <button class="esnek-buton" onclick="panelAcKapat('panel1')">
+                    Ağaçlar ne kadar oksijen üretir?
+                </button>
+            </div>
+            <div id="panel1" class="alt-panel">
+                <div class="panel-icerik">
+                    Ağaçların ürettiği oksijen miktarı, türüne, yaşına, büyüklüğüne ve çevresel koşullara bağlı olarak değişir. Genellikle, bir yetişkin ağaç yılda yaklaşık 100 kg oksijen üretebilir. Ancak, bu miktar türler arasında büyük farklılıklar gösterebilir. Örneğin, hızlı büyüyen ağaçlar genellikle daha fazla oksijen üretirken, yavaş büyüyen ağaçlar daha az oksijen üretebilir. Ayrıca, sağlıklı ve iyi bakılan ağaçlar daha fazla oksijen üretebilirken, hastalıklı veya zarar görmüş ağaçlar daha az oksijen üretebilir.
+                </div>
+            </div>
+        </div>
+        <div class="soru-isareti-kutusu">
+            <img src="image_1.jpeg" alt="Görsel">      
+        </div>
+    </div>
+
+    <div class="ana-hizalayici">
+        <div class="kapsayici">
+            <div class="buton-sarici">
+                <button class="esnek-buton" onclick="panelAcKapat('panel2')">
+                    Bir ormanda kaç ağaç bulunur?
+                </button>
+            </div>
+            <div id="panel2" class="alt-panel">
+                <div class="panel-icerik">
+                    Bir ormanda bulunan ağaç sayısı, ormanın boyutuna, coğrafi konumuna ve yönetimiyle belirlenir. Genellikle, bir ormanda 1000 ila 10000 arasında ağaç bulunabilir. Ancak, bu sayı türler ve koşullara göre önemli ölçüde değişebilir.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ana-hizalayici">
+        <div class="kapsayici">
+            <div class="buton-sarici">
+                <button class="esnek-buton" onclick="panelAcKapat('panel3')">
+                    Ağaçlar neden önemlidir?
+                </button>
+            </div>
+            <div id="panel3" class="alt-panel">
+                <div class="panel-icerik">
+                    Ağaçlar, atmosferdeki karbon dioksit temizlenmesine ve oksijen üretimiyle katkıda bulunarak iklim dengesini korumada önemli bir rol oynar. Ayrıca, ağaçlar toprak erozyonunu önleyerek çevre koruma ve biyoçeşitliliğin korunmasında da önemli bir yer tutar.
+                </div>
+            </div>
+        </div>
+        <div class="agac-kutusu">
+            <img src="image_2.png" alt="Görsel">      
+        </div>
+    </div>
+
+    <div class="ana-hizalayici">
+        <div class="kapsayici">
+            <div class="buton-sarici">
+                <button class="esnek-buton" onclick="panelAcKapat('panel4')">
+                    İklim değişikliği ağaçları nasıl etkiler?
+                </button>
+            </div>
+            <div id="panel4" class="alt-panel">
+                <div class="panel-icerik">
+                    İklim değişikliği, ağaçların büyüme, üreme ve hayatta kalma yeteneklerini etkileyebilir. Artan sıcaklıklar, kuraklık ve aşırı hava olayları gibi iklim değişikliği etkileri, ağaçların sağlığını ve ekosistemlerini tehdit edebilir. Bu durum, biyoçeşitliliğin azalmasına ve ekosistem hizmetlerinin bozulmasına yol açabilir.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ana-hizalayici">
+        <div class="kapsayici">
+            <div class="buton-sarici">
+                <button class="esnek-buton" onclick="panelAcKapat('panel5')">
+                    İklim değişikliği nedir?
+                </button>
+            </div>
+            <div id="panel5" class="alt-panel">
+                <div class="panel-icerik">
+                    İklim değişikliği, uzun vadeli hava koşullarındaki değişiklikleri ifade eder. Bu değişiklikler, insan faaliyetleri ve doğal süreçler tarafından tetiklenebilir. İklim değişikliği, sıcaklık artışı, deniz seviyesinin yükselmesi, aşırı hava olaylarının artması gibi etkilerle kendini gösterebilir. İnsan faaliyetleri, özellikle fosil yakıtların kullanımı ve ormansızlaşma, iklim değişikliğinin başlıca nedenlerindendir.
+                </div>
+            </div>
+        </div>
+        <div class="unlem_kutusu">
+            <img src="image_3.png" alt="Görsel">      
+        </div>
+    </div>
+  
+    <div class="ana-hizalayici">
+        <div class="kapsayici">
+            <div class="buton-sarici">
+                <button class="esnek-buton" onclick="panelAcKapat('panel6')">
+                    İklim değişikliği normal midir?
+                </button>
+            </div>
+            <div id="panel6" class="alt-panel">
+                <div class="panel-icerik">
+                    İklim değişikliği, doğal süreçler ve insan faaliyetleri tarafından tetiklenen uzun vadeli hava koşullarındaki değişiklikleri ifade eder. Doğal süreçler, volkanik patlamalar, güneş aktiviteleri ve okyanus akıntıları gibi faktörlerden kaynaklanabilir. Ancak, günümüzde gözlemlenen iklim değişikliği büyük ölçüde insan faaliyetleri, özellikle fosil yakıtların kullanımı ve ormansızlaşma nedeniyle meydana gelmektedir. Bu nedenle, iklim değişikliği hem doğal hem de insan kaynaklı olabilir, ancak günümüzdeki hızlı değişiklik büyük ölçüde insan etkisiyle ilişkilidir.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- İstek Soruları Gönderme Butonu -->
+    <div class ="ana-hizalayici" style="justify-content: center; margin-top: 50px;">
+        <div class="arrow1-kutusu img">
+            <img src="image_4.png" alt="Görsel">
+        </div>
+        <button class="esnek-buton" style="font-size: 16px; padding: 15px 30px;" onclick="istekGonder()">
+            İstek Sorularınızı Gönderin
+        </button>
+        <div class="arrow2-kutusu img">
+            <img src="image_4.png" alt="Görsel">
+        </div>
+    </div>
+
+    <script>
+        function panelAcKapat(id) {
+            var panel = document.getElementById(id);
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        }
+
+        function istekGonder() {
+    let mesaj = prompt("İsteğinizi yazın:");
+    if(mesaj) {
+        let mailLink = "mailto:bulutkaragoz15@gmail.com?subject=İstek Sorusu&body=" + encodeURIComponent(mesaj);
+        window.open(mailLink, '_blank'); 
+    }
+}
+        
+    </script>
+
+    <footer style="text-align: center; margin-top: 50px;">
+        <p>Created by <span style="font-weight: bold;">Bulut Karagöz, Yusuf Orhan</span> | &copy; 2026</p>
+    </footer>
+</body>
+</html>
